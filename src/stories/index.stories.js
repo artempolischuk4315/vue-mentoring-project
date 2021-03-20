@@ -1,13 +1,22 @@
-import { action } from "@storybook/addon-actions";
+import { storiesOf } from "@storybook/vue";
+import './../../main.css';
 
-import MyButton from "../components/MyButton.vue";
+import SearchButton from "../components/mainPageHeader/SubmitButton.vue";
+import SearchFilter from "../components/mainPageHeader/SearchFilter.vue";
+import SearchBar from "../components/mainPageHeader/SearchBar.vue";
+import ResultsSorter from "../components/resultBody/ResultsSorter";
 
-export default {
-  title: "Button"
-};
+storiesOf("Components", module)
+    .add("Search button", () => ({
+          components: { SearchButton },
+          template: "<search-button>SEARCH</search-button>"}))
+    .add("Search filter", () => ({
+          components:{ SearchFilter },
+          template: "<search-filter></search-filter>"}))
+    .add("Search bar", () => ({
+      components:{ SearchBar },
+      template: "<search-bar></search-bar>"}))
+    .add("Results sorter", () => ({
+        components:{ ResultsSorter },
+        template: "<results-sorter></results-sorter>"}));
 
-export const withText = () => ({
-  components: { MyButton },
-  template: '<my-button @click="action">Hello Button</my-button>',
-  methods: { action: action("clicked") }
-});
