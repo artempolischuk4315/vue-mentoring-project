@@ -1,16 +1,11 @@
 <template>
-    <button class="btn btn-secondary btn-lg" v-on:click="clickButton">
+    <button class="btn btn-secondary btn-lg">
         <slot/>
     </button>
 </template>
 
 <script>
     export default {
-        methods: {
-            clickButton: function () {
-                console.log("Click");
-            }
-        }
     };
 </script>
 

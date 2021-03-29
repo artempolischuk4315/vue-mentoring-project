@@ -1,48 +1,67 @@
 <template>
     <div class="main-header">
-        <form>
-            <div class="container">
-                <search-bar class="search-bar"></search-bar>
-                <search-button class="search-button">SEARCH</search-button>
-            </div>
+        <div class="header-bg"></div>
+        <div class="header-logo">
+            <logotype/>
+        </div>
+        <div class="search-title">FIND YOUR MOVIE</div>
+        <div class="container">
+            <search-bar class="search-bar"></search-bar>
             <search-filter class="search-filter"></search-filter>
-        </form>
+        </div>
     </div>
 </template>
 
 <script>
-    import SearchButton from "./SubmitButton.vue";
+    import Logotype from "./../Logotype"
     import SearchBar from "./SearchBar.vue";
     import SearchFilter from "./SearchFilter.vue";
     export default {
         components: {
             "search-bar": SearchBar,
-            "search-button": SearchButton,
-            "search-filter": SearchFilter
+            "search-filter": SearchFilter,
+            "logotype": Logotype
         }
     };
 </script>
 
-<style>
-    .container {
-        position: fixed;
-        left: 225px;
-        top: 100px;
-    }
+<style scoped>
     .search-bar {
-        display: inline-block;
-        float: left;
-    }
-    .search-button {
-        display: inline-block;
-        float: left;
     }
     .search-filter {
-        position: fixed;
-        left: 240px;
-        top: 153px;
+        position: absolute;
+        width: 100%;
+        padding: 15px 700px 0 0;
+    }
+    .container {
+        position: relative;
+        top: 10%;
+        left: 20%;
+        margin-left: -50px;
     }
     .main-header {
-        background-color: #2c3e50;
+        position: relative;
+        width: 100%;
+        height: 420px;
     }
+    .header-bg {
+        z-index: -1;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        background-image: url("./../../assets/posters.jpg");
+        -webkit-filter: blur(2px) brightness(0.35);
+    }
+    .header-logo {
+        padding: 10px 950px 0 0;
+    }
+    .search-title {
+        color: #f7f7f7;
+        font-size: 35px;
+        font-weight: lighter;
+        padding: 55px 700px 10px 60px;
+        letter-spacing: 2px;
+    }
+
 </style>
