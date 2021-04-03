@@ -13,10 +13,12 @@
 
 <script>
     import ResultsSorter from "./ResultsSorter.vue";
+    import { mapGetters } from "vuex";
     export default {
-        components: {
-            "results-sorter": ResultsSorter
-        }
+      computed: mapGetters(['filmsCount']),
+      components: {
+        "results-sorter": ResultsSorter
+      }
     };
 </script>
 

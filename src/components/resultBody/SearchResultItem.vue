@@ -1,19 +1,22 @@
 <template>
   <div id="result-item" class="result-item">
     <div class="item-image" @click="openItemCard">
-      <img :src="img" class="film-img" alt="film" />
+      <img :src="poster_path" class="film-img" alt="film" />
     </div>
     <div class="item-info">
       <div class="item-title-and-genre">
         <div class="item-title">
           {{ title }}
         </div>
-        <div class="item-genre">
-          {{ genre }}
+        <div class="genres">
+          <div class="item-genre" v-for="(genre, index) in genres" :key="genre.id">
+            <span v-if="index !== 0">, </span>
+            <span>{{genre}}</span>
+          </div>
         </div>
       </div>
       <div class="item-production-year">
-        <span class="border">{{ year }}</span>
+        <span class="border">{{ date }}</span>
       </div>
     </div>
   </div>
@@ -21,22 +24,30 @@
 
 <script>
 export default {
+  data() {
+    return {
+      date: Date
+    };
+  },
   props: {
     id: {
-      type: String
+      type: Number
     },
-    img: {
+    poster_path: {
       type: String
     },
     title: {
       type: String
     },
-    genre: {
-      type: String
+    genres: {
+      type: Array
     },
-    year: {
-      type: Number
+    release_date: {
+      type: String
     }
+  },
+  created() {
+    this.date = new Date(this.release_date).getFullYear();
   },
   methods: {
     openItemCard() {

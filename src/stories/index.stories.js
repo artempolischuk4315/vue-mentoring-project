@@ -5,7 +5,6 @@ import SearchButton from "../components/mainPageHeader/SubmitButton.vue";
 import SearchFilter from "../components/mainPageHeader/SearchFilter.vue";
 import SearchBar from "../components/mainPageHeader/SearchBar.vue";
 import ResultsSorter from "../components/middlePart/ResultsSorter";
-import SearchResultItem from "../components/resultBody/SearchResultItem";
 
 storiesOf("Components", module)
   .add("Search button", () => ({
@@ -23,14 +22,4 @@ storiesOf("Components", module)
   .add("Results sorter", () => ({
     components: { ResultsSorter },
     template: "<results-sorter></results-sorter>"
-  }))
-  .add("Result item", () => ({
-    components: { SearchResultItem },
-    template:
-      "<search-result-item " +
-      "id='1' " +
-      "year='2005' " +
-      "img='batman1.jpg' " +
-      "genre='Drama' " +
-      "title='Title'/>"
   }));

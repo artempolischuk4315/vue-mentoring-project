@@ -34,6 +34,6 @@ export default {
   padding-top: 22px;
 }
 #app {
-  width: fit-content;
+  width: border-box;
 }
 </style>

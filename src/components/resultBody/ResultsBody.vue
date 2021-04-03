@@ -1,12 +1,12 @@
 <template>
   <div class="results-body">
-    <div class="result-items" v-for="film in films.slice(0, 6)" :key="film.id">
+    <div class="result-items" v-for="film in allFilms.slice(0, 6)" :key="film.id">
       <result-item
         :id="film.id"
-        :genre="film.genre"
-        :img="film.img"
+        :genres="film.genres"
+        :poster_path="film.poster_path"
         :title="film.title"
-        :year="film.year"
+        :release_date="film.release_date"
       ></result-item>
     </div>
   </div>
@@ -14,20 +14,16 @@
 
 <script>
 import SearchResultItem from "./SearchResultItem";
-import ItemService from "../../ItemService";
+import {mapActions, mapGetters} from 'vuex';
 
 export default {
-  data() {
-    return {
-      films: []
-    };
-  },
-  methods: {},
+  methods: mapActions(['fetchFilms']),
+  computed: mapGetters(['allFilms']),
   components: {
     "result-item": SearchResultItem
   },
-  created() {
-    this.films = ItemService.films;
+  async mounted() {
+    await this.fetchFilms()
   }
 };
 </script>

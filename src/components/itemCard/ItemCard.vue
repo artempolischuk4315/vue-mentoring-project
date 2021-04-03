@@ -1,37 +1,33 @@
 <template>
   <div id="result-item" class="result-item">
     <div class="item-image">
-      <img
-        :src="require('@/assets/' + film.img + '')"
-        class="film-image"
-        alt="film"
-      />
+      <img :src="film.poster_path" class="film-img" alt="film" />
     </div>
     <div class="item-info">
       <div class="item-title">
         <p>{{ film.title }}</p>
       </div>
       <div class="item-subtitle">
-        <p>{{ film.subtitle }}</p>
+        <p>{{ film.tagline }}</p>
       </div>
       <div class="item-rating">
-        <p>{{ film.rating }}</p>
+        <p>{{ film.vote_count }}</p>
       </div>
       <div class="item-production-year">
-        <span>{{ film.year }} year</span>
+        <span>{{ film.release_date }} year</span>
       </div>
       <div class="item-duration">
-        <span>{{ film.duration }} min</span>
+        <span>{{ film.runtime }} min</span>
       </div>
       <div class="item-description">
-        <span>{{ film.description }}</span>
+        <span>{{ film.overview }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import ItemService from "../../ItemService";
+import {mapGetters} from "vuex";
 
 export default {
   data() {
@@ -39,14 +35,13 @@ export default {
       film: {}
     };
   },
-  created() {
-    ItemService.$on("openItemCard", cardToShow => {
-      this.film = cardToShow;
-    });
+  computed: {
+    ...mapGetters(["getFilmById"])
   },
   mounted() {
-    ItemService.openItemCard(this.$route.params.id);
-  }
+    console.log(this.$store)
+      this.film = this.getFilmById(this.$route.params.id);
+    }
 };
 </script>
 
