@@ -55,8 +55,9 @@ export default {
   display: flex;
 }
 .item-title {
+  text-align: left;
   width: 100%;
-  font-size: 160%;
+  font-size: 130%;
   color: white;
 }
 .item-production-year {
@@ -72,9 +73,13 @@ export default {
 .film-img {
   width: 100%;
 }
-.item-genre {
+.genres {
   width: 100%;
-  font-size: 120%;
+  text-align: left;
+}
+.item-genre {
+  font-size: 100%;
   color: white;
+  display: inline-block;
 }
 </style>

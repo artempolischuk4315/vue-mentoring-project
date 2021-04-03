@@ -30,11 +30,10 @@ export default {
   height: 80px;
   background-color: #555555;
 }
-.middle-panel {
-  height: 80px;
-  background-color: #555555;
-}
 .logo {
   padding-top: 22px;
+}
+#app {
+  width: fit-content;
 }
 </style>

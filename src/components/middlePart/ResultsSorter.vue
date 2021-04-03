@@ -1,29 +1,29 @@
 <template>
   <div class="container">
-    <form>
-      <label class="sorter-search-by">Sort By</label>
-      <input
-        type="radio"
-        class="btn-check"
-        name="choices"
-        id="choice1"
-        autocomplete="off"
-        checked
-      />
-      <label class="btn btn-primary" for="choice1">
-        <p>RELEASE DATE</p>
-      </label>
-      <input
-        type="radio"
-        class="btn-check"
-        name="choices"
-        id="choice2"
-        autocomplete="off"
-      />
-      <label class="btn btn-primary" for="choice2">
-        <p>RATING</p>
-      </label>
-    </form>
+          <div class="sorter-search-by">SORT BY</div>
+        <div class="buttons">
+        <input
+          type="radio"
+          class="btn-check"
+          name="choices"
+          id="choice1"
+          autocomplete="off"
+          checked
+        />
+        <label class="btn btn-primary left" for="choice1">
+          <p>RELEASE DATE</p>
+        </label>
+        <input
+          type="radio"
+          class="btn-check"
+          name="choices"
+          id="choice2"
+          autocomplete="off"
+        />
+        <label class="btn btn-primary right" for="choice2">
+          <p>RATING</p>
+        </label>
+      </div>
   </div>
 </template>
 
@@ -43,9 +43,14 @@ input[type="radio"] + label {
   padding: 5px 12px;
 }
 .sorter-search-by {
+  font-size: 18px;
+  padding-right: 10px;
+  padding-top: 8px;
   color: white;
-  padding: 9px 5px 4px 5px;
-  border-radius: 4px;
+  float: left;
+}
+.buttons {
+  float: left;
 }
 p {
   margin: 3px auto auto auto;

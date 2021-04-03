@@ -1,11 +1,11 @@
 <template>
   <div class="main-header">
     <div class="header-bg"></div>
-    <div class="header-logo">
-      <logotype />
-    </div>
-    <div class="search-title">FIND YOUR MOVIE</div>
     <div class="container">
+      <div class="header-logo">
+        <logotype />
+      </div>
+      <div class="search-title">FIND YOUR MOVIE</div>
       <search-bar class="search-bar"></search-bar>
       <search-filter class="search-filter"></search-filter>
     </div>
@@ -27,17 +27,10 @@ export default {
 
 <style scoped>
 .search-bar {
+  padding: 30px 0 7px;
 }
 .search-filter {
-  position: absolute;
-  width: 100%;
-  padding: 15px 700px 0 0;
-}
-.container {
-  position: relative;
-  top: 10%;
-  left: 20%;
-  margin-left: -50px;
+  padding: 7px 0 7px;
 }
 .main-header {
   position: relative;
@@ -48,19 +41,20 @@ export default {
   z-index: -1;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 102%;
 
   background-image: url("./../../assets/posters.jpg");
   -webkit-filter: blur(2px) brightness(0.35);
 }
 .header-logo {
-  padding: 10px 950px 0 0;
+  padding: 10px 1750px 0 0;
 }
 .search-title {
   color: #f7f7f7;
   font-size: 35px;
-  font-weight: lighter;
-  padding: 55px 700px 10px 60px;
+  float:left;
+  padding: 50px 60px 10px 0;
   letter-spacing: 2px;
+  font-weight: lighter;
 }
 </style>

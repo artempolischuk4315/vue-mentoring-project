@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <label class="search-by">Search By</label>
+    <div class="search-by">SEARCH BY</div>
+    <div class = "buttons">
     <input
       type="radio"
       class="btn-check"
@@ -19,6 +20,7 @@
       autocomplete="off"
     />
     <label class="btn btn-primary" for="option2">GENRE</label>
+    </div>
   </div>
 </template>
 
@@ -32,11 +34,18 @@ input[type="radio"]:checked + label {
   background-color: #f65261;
 }
 input[type="radio"] + label {
+  font-size: 17px;
+  height: 40px;
   width: 100px;
 }
 .search-by {
+  font-size: 18px;
+  padding-right: 10px;
+  padding-top: 8px;
   color: white;
-  border-radius: 4px;
-  padding: 9px 12px 4px 5px;
+  float: left;
+}
+.buttons {
+  float: left;
 }
 </style>
