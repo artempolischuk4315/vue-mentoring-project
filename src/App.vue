@@ -22,5 +22,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   overflow-x: hidden;
+  min-width: 1600px;
 }
 </style>

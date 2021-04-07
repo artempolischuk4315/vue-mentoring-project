@@ -44,7 +44,7 @@ export default {
   height: 102%;
 
   background-image: url("./../../assets/posters.jpg");
-  -webkit-filter: blur(2px) brightness(0.35);
+  -webkit-filter: blur(2px) brightness(0.3);
 }
 .header-logo {
   padding: 10px 1750px 0 0;

@@ -1,6 +1,8 @@
 <template>
   <div class="card-menu">
-    <item-card class="item-card"></item-card>
+    <div class="first-block">
+      <item-card class="item-card"></item-card>
+    </div>
     <div class="mid-panel"></div>
     <results-body class="results-body"></results-body>
   </div>
@@ -21,5 +23,8 @@ export default {
 .mid-panel {
   height: 80px;
   background-color: #555555;
+}
+.card-menu {
+  width: fit-content;
 }
 </style>
