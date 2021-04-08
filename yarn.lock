@@ -2542,10 +2542,10 @@
   resolved "https://registry.yarnpkg.com/@vue/cli-overlay/-/cli-overlay-4.5.11.tgz#ea99493131182285f7ac2762290354d6e5b188e8"
   integrity sha512-aDQNw+oGk5+KR0vL9TocjfzyYHTJxR2lS8iPbcL4lRglCs2dudOE7QWXypj5dM4rQus0jJ5fxJTS55o9uy9fcQ==
 
-"@vue/cli-plugin-babel@^4.5.12":
+"@vue/cli-plugin-babel@~4.5.0":
   version "4.5.12"
-  resolved "https://registry.npm.taobao.org/@vue/cli-plugin-babel/download/@vue/cli-plugin-babel-4.5.12.tgz#c9737d4079485ce9be07c463c81e1e33886c6219"
-  integrity sha1-yXN9QHlIXOm+B8RjyB4eM4hsYhk=
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-4.5.12.tgz#c9737d4079485ce9be07c463c81e1e33886c6219"
+  integrity sha512-PhiNDhlGydsRR0F00OJqG/Q3Mz2G1ko8XqS7CJ0l1GVVGmklUEBy2dW/S8ntEgHpSkFa6h49PgYP3WE2OM3CEg==
   dependencies:
     "@babel/core" "^7.11.0"
     "@vue/babel-preset-app" "^4.5.12"
@@ -12609,6 +12609,11 @@ shellwords@^0.1.1:
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
+shvl@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/shvl/-/shvl-2.0.2.tgz#eca7decb9bbd4e8dd93f06ea9ab94036319cd351"
+  integrity sha512-G3KkIXPza3dgkt6Bo8zIl5K/KvAAhbG6o9KfAjhPvrIIzzAhnfc2ztv1i+iPTbNNM43MaBUqIaZwqVjkSgY/rw==
+
 side-channel@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/side-channel/-/side-channel-1.0.4.tgz#efce5c8fdc104ee751b25c58d4290011fa5ea2cf"
@@ -14253,6 +14258,14 @@ vue@^2.6.12:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
+
+vuex-persistedstate@^4.0.0-beta.3:
+  version "4.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/vuex-persistedstate/-/vuex-persistedstate-4.0.0-beta.3.tgz#89dd712de72d28e85cc95467d066002c1405f277"
+  integrity sha512-T4IRD27qoUWh+8qr6T6zVp15xO7x/nPgnU13OD0C2uUwA7U9PhGozrj6lvVmMYDyRgc36J0msMXn3GvwHjkIhA==
+  dependencies:
+    deepmerge "^4.2.2"
+    shvl "^2.0.2"
 
 vuex@^3.4.0:
   version "3.6.2"

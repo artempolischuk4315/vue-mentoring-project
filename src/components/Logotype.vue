@@ -1,22 +1,20 @@
 <template>
-    <div class="logo">
+  <div class="logo">
     <span class="firstPart">netflix</span>
-        <span>roulette</span>
-    </div>
+    <span>roulette</span>
+  </div>
 </template>
 
-<script>
-
-</script>
+<script></script>
 
 <style scoped>
-    .logo {
-        color: #f65261;
-    }
-    .logo span {
-        font-size: 25px;
-    }
-    .firstPart {
-        font-weight: bold;
-    }
+.logo {
+  color: #f65261;
+}
+.logo span {
+  font-size: 25px;
+}
+.firstPart {
+  font-weight: bold;
+}
 </style>
