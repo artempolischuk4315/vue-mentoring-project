@@ -19,7 +19,7 @@
         <div class="item-info-without-description">
         <div class="item-row-title">
           <div class="item-title">{{ film.title }}</div>
-          <div class="item-rating">{{ film.vote_count }}</div>
+          <div class="item-rating">{{ film.vote_average }}</div>
         </div>
         <div class="sub-info-group">
           <div class="item-subtitle">{{film.tagline}}</div>
@@ -134,8 +134,9 @@ export default {
 .item-subtitle {
   font-size: 17px;
   font-weight: 180;
-  width: 100%;
   color: #b7b7b7;
+  float: left;
+  width: 100%;
 }
 span {
   font-size: 14px;

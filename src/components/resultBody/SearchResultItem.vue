@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   data() {
     return {
@@ -30,28 +32,23 @@ export default {
     };
   },
   props: {
-    id: {
-      type: Number
-    },
-    poster_path: {
-      type: String
-    },
-    title: {
-      type: String
-    },
-    genres: {
-      type: Array
-    },
-    release_date: {
-      type: String
-    }
+    id: Number,
+    poster_path: String,
+    title:  String,
+    genres: Array,
+    release_date: String
   },
   created() {
     this.date = new Date(this.release_date).getFullYear();
   },
+  computed: mapGetters(['filterFilmsByGenre']),
   methods: {
+    ...mapMutations(["updateCurrentFilmCardGenre", "updateSelectedFilms", "updateSearchFieldInput"]),
     openItemCard() {
-      this.$router.push("/card/" + this.id).catch(() => {});
+      this.updateCurrentFilmCardGenre(this.genres[0])
+      this.updateSelectedFilms(this.filterFilmsByGenre(this.genres[0]))
+      this.updateSearchFieldInput(this.genres[0])
+      this.$router.push("/card/" + this.id);
     }
   }
 };

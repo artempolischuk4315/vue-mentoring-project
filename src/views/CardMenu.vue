@@ -1,20 +1,26 @@
 <template>
   <div class="card-menu">
     <div class="first-block">
-      <item-card class="item-card"></item-card>
+      <ItemCard class="item-card"></ItemCard>
     </div>
-    <div class="mid-panel"></div>
-    <results-body class="results-body"></results-body>
+    <div class="mid-panel">
+      <div class="info-block">
+        <Information/>
+      </div>
+    </div>
+    <ResultsBody class="results-body"></ResultsBody>
   </div>
 </template>
 
 <script>
 import ResultsBody from "./../components/resultBody/ResultsBody.vue";
 import ItemCard from "./../components/itemCard/ItemCard";
+import Information from "../components/itemCard/Information";
 export default {
   components: {
-    "results-body": ResultsBody,
-    "item-card": ItemCard
+    ResultsBody,
+    ItemCard,
+    Information
   }
 };
 </script>
@@ -23,6 +29,15 @@ export default {
 .mid-panel {
   height: 80px;
   background-color: #555555;
+  width: 100%;
+  display: flex;
+  padding: 10px 5px;
+  margin: 0 auto;
+}
+.info-block {
+  padding-left: 150px;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 .card-menu {
   width: fit-content;

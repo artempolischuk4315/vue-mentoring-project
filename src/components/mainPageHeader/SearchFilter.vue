@@ -8,6 +8,7 @@
       name="options"
       id="option1"
       autocomplete="off"
+      v-on:click="chooseTitleOption"
       checked
     />
     <label class="btn btn-primary" for="option1">TITLE</label>
@@ -18,11 +19,36 @@
       name="options"
       id="option2"
       autocomplete="off"
+      v-on:click="chooseGenreOption"
     />
     <label class="btn btn-primary" for="option2">GENRE</label>
     </div>
   </div>
 </template>
+
+<script>
+import {mapMutations, mapGetters} from "vuex";
+
+export default {
+  mounted() {
+    if(this.getCurrentSearchFilterOption === "title")
+      document.getElementById("option1").checked = true;
+    else
+      document.getElementById("option2").checked = true;
+  },
+  computed: mapGetters(["getCurrentSearchFilterOption"]),
+  methods: {
+    ...mapMutations(["chooseSearchOption"]),
+    chooseGenreOption() {
+      this.chooseSearchOption("genre")
+    },
+    chooseTitleOption() {
+      console.log("title")
+      this.chooseSearchOption("title")
+    }
+  }
+};
+</script>
 
 <style scoped>
 input[type="radio"] {
