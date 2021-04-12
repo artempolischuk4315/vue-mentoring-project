@@ -8,6 +8,7 @@
           name="choices"
           id="choice1"
           autocomplete="off"
+          v-on:click="chooseSortByReleaseDateOption"
           checked
         />
         <label class="btn btn-primary left" for="choice1">
@@ -19,6 +20,7 @@
           name="choices"
           id="choice2"
           autocomplete="off"
+          v-on:click="chooseSortByRatingOption"
         />
         <label class="btn btn-primary right" for="choice2">
           <p>RATING</p>
@@ -26,6 +28,46 @@
       </div>
   </div>
 </template>
+
+<script>
+import {mapMutations, mapGetters} from "vuex";
+
+function performSorting(option, array) {
+  if (option === "release date") {
+    return array.sort((firstFilm, secondFilm) => {
+      return new Date(secondFilm.release_date) - new Date(firstFilm.release_date);
+    });
+  }
+  if (option === "rating") {
+    return array.sort((firstFilm, secondFilm) => {
+      return secondFilm.vote_average - firstFilm.vote_average;
+    });
+  }
+}
+
+export default {
+  computed: mapGetters(["allSelectedFilms", "allFilms", "getSearchFieldInput"]),
+  methods: {
+    ...mapMutations(["updateSelectedFilms", "updateFilms"]),
+    chooseSortByReleaseDateOption() {
+      this.sortByOption("release date")
+    },
+    chooseSortByRatingOption() {
+      this.sortByOption("rating")
+    },
+    sortByOption(option) {
+      let sortedFilms
+      if(this.getSearchFieldInput.trim() !== '') {
+        sortedFilms = performSorting(option, this.allSelectedFilms);
+        this.updateSelectedFilms(sortedFilms);
+      } else {
+        sortedFilms = performSorting(option, this.allFilms);
+        this.updateFilms(sortedFilms);
+      }
+    }
+    }
+};
+</script>
 
 <style scoped>
 input[type="radio"] {

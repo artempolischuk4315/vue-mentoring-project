@@ -5,6 +5,7 @@
         id="input-field"
         class="form-control"
         v-model="inputText"
+        @keyup.enter="onSubmit"
       />
     <div class="search-button">
       <button class="btn btn-secondary btn-lg" v-on:click="onSubmit">
@@ -15,16 +16,24 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   data() {
     return {
       inputText: ""
     };
   },
+  computed: mapGetters(["getCurrentSearchFilterOption", "filterFilmsByGenre", "filterFilmsByTitle"]),
   methods: {
+    ...mapMutations([ "updateSearchFieldInput", "updateSelectedFilms"]),
     onSubmit() {
-      alert("Search text: " + this.inputText);
-      console.log("Search text: " + this.inputText);
+      let currentOption = this.getCurrentSearchFilterOption;
+      if(currentOption === "title")
+        this.updateSelectedFilms(this.filterFilmsByTitle(this.inputText))
+      if (currentOption === "genre")
+        this.updateSelectedFilms(this.filterFilmsByGenre(this.inputText))
+      this.updateSearchFieldInput(this.inputText)
     }
   }
 };
