@@ -1,7 +1,9 @@
 <template>
   <div id="result-item" class="result-item">
-    <div class="item-image" @click="openItemCard">
-      <img :src="poster_path" class="film-img" alt="film" />
+    <div class="item-image" v-image-directive @click="openItemCard">
+      <img :data-url="poster_path"
+           class="film-img"
+           alt="film" />
     </div>
     <div class="item-info">
       <div class="item-title-and-genre">
@@ -25,6 +27,7 @@
 <script>
 import { mapGetters, mapMutations } from "vuex";
 
+
 export default {
   data() {
     return {
@@ -38,6 +41,9 @@ export default {
     genres: Array,
     release_date: String
   },
+  /*directives: {
+    lazyLoadDirective: imageDirective
+  },*/
   created() {
     this.date = new Date(this.release_date).getFullYear();
   },

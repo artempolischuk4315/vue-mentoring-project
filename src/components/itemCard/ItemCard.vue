@@ -13,7 +13,10 @@
     </div>
     <div id="result-item" class="result-item">
       <div class="item-image">
-        <img :src="film.poster_path" class="film-img" alt="film" />
+        <img
+          :src="film.poster_path"
+          class="film-img"
+          alt="film" />
       </div>
       <div class="item-info">
         <div class="item-info-without-description">
@@ -25,7 +28,7 @@
           <div class="item-subtitle">{{film.tagline}}</div>
           <div class="item-row-year">
             <div class="item-production-year">{{ date }} <span>year</span> </div>
-            <div class="item-duration">{{film.runtime}} <span>min</span></div>
+            <div class="item-duration">{{film.runtime | durationFilter}} <span>min</span></div>
           </div>
           </div>
         </div>
