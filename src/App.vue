@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <router-view :key="$route.fullPath"></router-view>
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
+  data() {
+    return {};
+  },
   components: {}
 };
 </script>
@@ -18,6 +21,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  overflow-x: hidden;
+  min-width: 1600px;
 }
 </style>
