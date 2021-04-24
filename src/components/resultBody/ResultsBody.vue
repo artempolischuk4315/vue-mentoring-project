@@ -1,6 +1,6 @@
 <template>
   <div class="results-body">
-    <div class="result-items" v-for="film in allSelectedFilms" :key="film.id">
+    <div class="result-items" v-for="film in selectFilms()" :key="film.id">
       <SearchResultItem
         :id="film.id"
         :genres="film.genres"
@@ -17,10 +17,22 @@ import SearchResultItem from "./SearchResultItem";
 import {mapActions, mapGetters} from 'vuex';
 
 export default {
-  methods: mapActions(['fetchFilms']),
-  computed: mapGetters(['allSelectedFilms']),
+  methods: {
+    ...mapActions(['fetchFilms']),
+    selectFilms() {
+      if(this.$router.currentRoute.path.includes("card"))
+        return this.films = this.allSelectedFilmsForCardMenu
+      return this.films = this.allSelectedFilms
+    }
+  },
+  computed: mapGetters(['allSelectedFilms', 'allSelectedFilmsForCardMenu']),
   components: {
      SearchResultItem
+  },
+  data() {
+    return {
+      films: [],
+    };
   },
   async mounted() {
     await this.fetchFilms()

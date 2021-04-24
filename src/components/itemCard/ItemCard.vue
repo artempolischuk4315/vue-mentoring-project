@@ -12,7 +12,7 @@
       </div>
     </div>
     <div id="result-item" class="result-item">
-      <div class="item-image">
+      <div class="item-image" v-image-directive>
         <img
           :src="film.poster_path"
           class="film-img"
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import Logotype from "./../Logotype.vue";
 
 export default {
@@ -52,13 +52,15 @@ export default {
       date: Date
     };
   },
+  methods: mapActions(["findMovieById"]),
   computed: {
-    ...mapGetters(["getFilmById"])
+    ...mapGetters(["getFilmCard"])
   },
-  mounted() {
-    console.log(this.$store)
-      this.film = this.getFilmById(this.$route.params.id);
-      this.date = new Date(this.film.release_date).getFullYear();
+  async mounted() {
+    window.scrollTo(0, 0);
+    await this.findMovieById(this.$route.params.id);
+    this.film = this.getFilmCard;
+    this.date = new Date(this.film.release_date).getFullYear();
     }
 };
 </script>
@@ -164,7 +166,7 @@ span {
   margin-top: 20px;
   text-align: justify;
   min-width: 800px;
-  max-width: 1500px;
+  max-width: 1300px;
   font-size: 14px;
   font-weight: 100;
   color: white;
@@ -172,7 +174,7 @@ span {
 }
 .header-top-container {
   padding: 0 30px 10px;
-  width: 100%;
+  width: 90%;
   float: left;
 }
 .item-header {
@@ -187,5 +189,10 @@ span {
 .back-button {
   size: 25px;
 }
-
+svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+  vertical-align: bottom;
+}
 </style>

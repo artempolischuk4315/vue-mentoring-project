@@ -23,5 +23,6 @@ export default {
   color: #2c3e50;
   overflow-x: hidden;
   min-width: 1600px;
+  max-width: 1900px;
 }
 </style>

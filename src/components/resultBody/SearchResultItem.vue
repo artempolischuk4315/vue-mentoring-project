@@ -25,8 +25,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
-
+import { mapActions, mapMutations } from "vuex";
 
 export default {
   data() {
@@ -41,20 +40,17 @@ export default {
     genres: Array,
     release_date: String
   },
-  /*directives: {
-    lazyLoadDirective: imageDirective
-  },*/
   created() {
     this.date = new Date(this.release_date).getFullYear();
   },
-  computed: mapGetters(['filterFilmsByGenre']),
   methods: {
     ...mapMutations(["updateCurrentFilmCardGenre", "updateSelectedFilms", "updateSearchFieldInput"]),
+    ...mapActions(["findFilmsByGenreForCardMenu"]),
     openItemCard() {
       this.updateCurrentFilmCardGenre(this.genres[0])
-      this.updateSelectedFilms(this.filterFilmsByGenre(this.genres[0]))
+      this.findFilmsByGenreForCardMenu(this.genres[0])
       this.updateSearchFieldInput(this.genres[0])
-      this.$router.push("/card/" + this.id);
+      this.$router.push("/card/" + this.id).catch(()=>{});
     }
   }
 };
@@ -86,6 +82,7 @@ export default {
 }
 .film-img {
   width: 100%;
+  height: 580px;
 }
 .genres {
   width: 100%;
