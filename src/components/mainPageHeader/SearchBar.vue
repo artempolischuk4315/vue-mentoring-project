@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   data() {
@@ -24,15 +24,21 @@ export default {
       inputText: ""
     };
   },
-  computed: mapGetters(["getCurrentSearchFilterOption", "filterFilmsByGenre", "filterFilmsByTitle"]),
+  created() {
+    if (this.getSearchFieldInput.trim() !== "") {
+      this.updateSearchFieldInput("")
+    }
+  },
+  computed: mapGetters(["getCurrentSearchFilterOption", "getCurrentSortFilmsOption", "getSearchFieldInput"]),
   methods: {
+    ...mapActions(['findFilmsByTitle', 'findFilmsByGenre']),
     ...mapMutations([ "updateSearchFieldInput", "updateSelectedFilms"]),
     onSubmit() {
       let currentOption = this.getCurrentSearchFilterOption;
       if(currentOption === "title")
-        this.updateSelectedFilms(this.filterFilmsByTitle(this.inputText))
-      if (currentOption === "genre")
-        this.updateSelectedFilms(this.filterFilmsByGenre(this.inputText))
+        this.findFilmsByTitle(this.inputText)
+      if (currentOption === "genres")
+        this.findFilmsByGenre(this.inputText)
       this.updateSearchFieldInput(this.inputText)
     }
   }

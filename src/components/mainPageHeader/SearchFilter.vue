@@ -40,10 +40,9 @@ export default {
   methods: {
     ...mapMutations(["chooseSearchOption"]),
     chooseGenreOption() {
-      this.chooseSearchOption("genre")
+      this.chooseSearchOption("genres")
     },
     chooseTitleOption() {
-      console.log("title")
       this.chooseSearchOption("title")
     }
   }

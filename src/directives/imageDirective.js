@@ -6,9 +6,12 @@ export default {
       );
       if (imageElement) {
         imageElement.addEventListener("load", () => {
-          setTimeout(() => el.classList.add("loaded"), 100);
+          setTimeout(() => el.classList.add("loaded"), 1000);
         });
-        imageElement.addEventListener("error", () => console.log("error occurred during images loading"));
+        imageElement.addEventListener("error", () => {
+          console.log("error occurred during image loading")
+          imageElement.src = "https://nilfiskcfm.com/wp-content/uploads/2016/12/placeholder.png";
+        });
         imageElement.src = imageElement.dataset.url;
       }
     }
@@ -25,7 +28,7 @@ export default {
     function createObserver() {
       const options = {
         root: null,
-        threshold: "1"
+        threshold: "0"
       };
       const observer = new IntersectionObserver(handleIntersect, options);
       observer.observe(el);

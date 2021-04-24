@@ -30,42 +30,28 @@
 </template>
 
 <script>
-import {mapMutations, mapGetters} from "vuex";
-
-function performSorting(option, array) {
-  if (option === "release date") {
-    return array.sort((firstFilm, secondFilm) => {
-      return new Date(secondFilm.release_date) - new Date(firstFilm.release_date);
-    });
-  }
-  if (option === "rating") {
-    return array.sort((firstFilm, secondFilm) => {
-      return secondFilm.vote_average - firstFilm.vote_average;
-    });
-  }
-}
+import { mapMutations, mapActions, mapGetters } from "vuex";
 
 export default {
-  computed: mapGetters(["allSelectedFilms", "allFilms", "getSearchFieldInput"]),
+  mounted() {
+    if(this.getCurrentSortFilmsOption === "release_date")
+      document.getElementById("choice1").checked = true;
+    else
+      document.getElementById("choice2").checked = true;
+  },
+  computed: mapGetters(["getCurrentSortFilmsOption"]),
   methods: {
-    ...mapMutations(["updateSelectedFilms", "updateFilms"]),
+    ...mapActions(["sortFilmsByOption"]),
+    ...mapMutations(["chooseSortOption"]),
     chooseSortByReleaseDateOption() {
-      this.sortByOption("release date")
+      this.sortFilmsByOption("release_date")
+      this.chooseSortOption("release_date");
     },
     chooseSortByRatingOption() {
-      this.sortByOption("rating")
-    },
-    sortByOption(option) {
-      let sortedFilms
-      if(this.getSearchFieldInput.trim() !== '') {
-        sortedFilms = performSorting(option, this.allSelectedFilms);
-        this.updateSelectedFilms(sortedFilms);
-      } else {
-        sortedFilms = performSorting(option, this.allFilms);
-        this.updateFilms(sortedFilms);
-      }
+      this.sortFilmsByOption("vote_average")
+      this.chooseSortOption("vote_average");
     }
-    }
+  }
 };
 </script>
 
