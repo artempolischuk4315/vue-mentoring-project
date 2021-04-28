@@ -30,7 +30,18 @@
 </template>
 
 <script>
-import { mapMutations, mapActions, mapGetters } from "vuex";
+import { mapMutations, mapGetters } from "vuex";
+
+function changeRoute() {
+  this.$router.push({
+    name: "main", query: {
+      search: this.getSearchFieldInput,
+      sortBy: this.getCurrentSortFilmsOption,
+      searchBy: this.getCurrentSearchFilterOption,
+      sortOrder: "asc"
+    }
+  });
+}
 
 export default {
   mounted() {
@@ -39,17 +50,16 @@ export default {
     else
       document.getElementById("choice2").checked = true;
   },
-  computed: mapGetters(["getCurrentSortFilmsOption"]),
+  computed: mapGetters(["getCurrentSortFilmsOption", "getCurrentSearchFilterOption", "getSearchFieldInput"]),
   methods: {
-    ...mapActions(["sortFilmsByOption"]),
     ...mapMutations(["chooseSortOption"]),
     chooseSortByReleaseDateOption() {
-      this.sortFilmsByOption("release_date")
       this.chooseSortOption("release_date");
+      changeRoute.call(this);
     },
     chooseSortByRatingOption() {
-      this.sortFilmsByOption("vote_average")
       this.chooseSortOption("vote_average");
+      changeRoute.call(this);
     }
   }
 };

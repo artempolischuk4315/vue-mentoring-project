@@ -48,8 +48,6 @@ export default {
     ...mapActions(["findFilmsByGenreForCardMenu"]),
     openItemCard() {
       this.updateCurrentFilmCardGenre(this.genres[0])
-      this.findFilmsByGenreForCardMenu(this.genres[0])
-      this.updateSearchFieldInput(this.genres[0])
       this.$router.push("/card/" + this.id).catch(()=>{});
     }
   }
