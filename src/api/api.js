@@ -1,12 +1,7 @@
 import axios from "axios";
+import { router } from "../router";
 
 const ApiService = {
-
-  findAllMovies() {
-    return axios
-      .get('http://react-cdp-api.herokuapp.com/movies?limit=12')
-      .then(res => res.data)
-  },
 
   findMovieById(id) {
     return axios
@@ -14,31 +9,21 @@ const ApiService = {
       .then((response) => response.data)
   },
 
-  sortMoviesByOption(searchField, filterField, sortOption) {
-    return axios
+ async performQuery() {
+
+   return axios
       .get('http://react-cdp-api.herokuapp.com/movies', { params: {
-          search: searchField,
-          sortBy: sortOption,
-          searchBy: filterField,
-          sortOrder: "desc",
-          limit: 12
+          search: router.currentRoute.query.search,
+          sortBy: router.currentRoute.query.sortBy,
+          searchBy: router.currentRoute.query.searchBy,
+          sortOrder: router.currentRoute.query.sortOrder,
+          limit: router.currentRoute.query.limit
         }})
-      .then(res => res.data)
+      .then(res => {
+        return res.data })
   },
 
-  findMoviesByTitle(searchField, sortField) {
-    return axios
-      .get('http://react-cdp-api.herokuapp.com/movies', { params: {
-          search: searchField,
-          sortBy: sortField,
-          searchBy: "title",
-          sortOrder: "desc",
-          limit: 12
-        }})
-      .then(res => res.data)
-  },
-
-  findMoviesByGenre(searchField, sortField) {
+  findMoviesByGenreForCardMenu(searchField, sortField) {
     return axios
       .get('http://react-cdp-api.herokuapp.com/movies', { params: {
           search: searchField,
@@ -49,6 +34,7 @@ const ApiService = {
         }})
       .then(res => res.data)
   }
+
 }
 
 export default ApiService;

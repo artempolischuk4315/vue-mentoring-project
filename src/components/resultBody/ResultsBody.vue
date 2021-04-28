@@ -14,11 +14,10 @@
 
 <script>
 import SearchResultItem from "./SearchResultItem";
-import {mapActions, mapGetters} from 'vuex';
+import {mapGetters} from 'vuex';
 
 export default {
   methods: {
-    ...mapActions(['fetchFilms']),
     selectFilms() {
       if(this.$router.currentRoute.path.includes("card"))
         return this.films = this.allSelectedFilmsForCardMenu
@@ -34,9 +33,6 @@ export default {
       films: [],
     };
   },
-  async mounted() {
-    await this.fetchFilms()
-  }
 };
 </script>
 

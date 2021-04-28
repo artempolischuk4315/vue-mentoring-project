@@ -16,7 +16,18 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
+
+function changeRoute() {
+  this.$router.push({
+    name: "main", query: {
+      search: this.getSearchFieldInput,
+      sortBy: this.getCurrentSortFilmsOption,
+      searchBy: this.getCurrentSearchFilterOption,
+      sortOrder: "asc"
+    }
+  });
+}
 
 export default {
   data() {
@@ -24,22 +35,18 @@ export default {
       inputText: ""
     };
   },
-  created() {
-    if (this.getSearchFieldInput.trim() !== "") {
-      this.updateSearchFieldInput("")
-    }
-  },
+
   computed: mapGetters(["getCurrentSearchFilterOption", "getCurrentSortFilmsOption", "getSearchFieldInput"]),
   methods: {
-    ...mapActions(['findFilmsByTitle', 'findFilmsByGenre']),
-    ...mapMutations([ "updateSearchFieldInput", "updateSelectedFilms"]),
+    ...mapMutations([ "updateSearchFieldInput", "chooseSearchOption"]),
     onSubmit() {
+      this.updateSearchFieldInput(this.inputText)
       let currentOption = this.getCurrentSearchFilterOption;
       if(currentOption === "title")
-        this.findFilmsByTitle(this.inputText)
+        this.chooseSearchOption("title")
       if (currentOption === "genres")
-        this.findFilmsByGenre(this.inputText)
-      this.updateSearchFieldInput(this.inputText)
+        this.chooseSearchOption("genres")
+      changeRoute.call(this);
     }
   }
 };

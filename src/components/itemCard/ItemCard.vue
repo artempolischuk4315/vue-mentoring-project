@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 import Logotype from "./../Logotype.vue";
 
 export default {
@@ -52,15 +52,17 @@ export default {
       date: Date
     };
   },
-  methods: mapActions(["findMovieById"]),
+  methods: mapActions(["findMovieById", "findFilmsByGenreForCardMenu"]),
   computed: {
-    ...mapGetters(["getFilmCard"])
+    ...mapGetters(["getFilmCard"]),
+    ...mapMutations(["updateCurrentFilmCardGenre"]),
   },
   async mounted() {
     window.scrollTo(0, 0);
     await this.findMovieById(this.$route.params.id);
     this.film = this.getFilmCard;
     this.date = new Date(this.film.release_date).getFullYear();
+    await this.findFilmsByGenreForCardMenu(this.film.genres[0])
     }
 };
 </script>

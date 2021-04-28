@@ -9,7 +9,6 @@ export default {
           setTimeout(() => el.classList.add("loaded"), 1000);
         });
         imageElement.addEventListener("error", () => {
-          console.log("error occurred during image loading")
           imageElement.src = "https://nilfiskcfm.com/wp-content/uploads/2016/12/placeholder.png";
         });
         imageElement.src = imageElement.dataset.url;
